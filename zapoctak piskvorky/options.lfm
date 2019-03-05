@@ -1,0 +1,234 @@
+object OptionsForm: TOptionsForm
+  Left = 713
+  Height = 217
+  Top = 756
+  Width = 300
+  BorderStyle = bsDialog
+  Caption = 'Možnosti'
+  ClientHeight = 217
+  ClientWidth = 300
+  Color = clWhite
+  OnClick = FormClick
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  LCLVersion = '1.8.4.0'
+  object BlankPanel: TPanel
+    Left = 0
+    Height = 12
+    Top = 0
+    Width = 12
+    BevelOuter = bvNone
+    ParentShowHint = False
+    TabOrder = 6
+  end
+  object StartStrategyLabel: TLabel
+    Left = 16
+    Height = 23
+    Top = 48
+    Width = 152
+    AutoSize = False
+    Caption = 'Další hru začíná'
+    FocusControl = StartStrategyComboBox
+    Font.Height = 24
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    WordWrap = True
+  end
+  object PlayTimeLabel: TLabel
+    Left = 16
+    Height = 23
+    Top = 80
+    Width = 152
+    AutoSize = False
+    Caption = 'Časový limit tahu'
+    FocusControl = PlayTimeComboBox
+    Font.Height = 24
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object StartStrategyComboBox: TComboBox
+    Left = 176
+    Height = 27
+    Hint = 'Určuje, který hráč bude začínat další kolo'#13#10'Druhý - začíná ten, který nezačínal v minulém kole, tj. "nastřídačku"'#13#10'První - vždy začíná stejný hráč, tedy ten původní'#13#10'Vítěz - začíná vždy vítěz minulého kola'#13#10'Poražený - začíná vždy poražený z minulého kola'#13#10'Náhodný - začíná spravedlivě náhodně vybraný hráč'
+    Top = 48
+    Width = 108
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    AutoDropDown = True
+    AutoSelect = False
+    AutoSize = False
+    Font.Height = -14
+    ItemHeight = 19
+    ItemIndex = 1
+    Items.Strings = (
+      'První'
+      'Druhý'
+      'Vítěz'
+      'Poražený'
+      'Náhodný'
+    )
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    Style = csDropDownList
+    TabOrder = 0
+    Text = 'Druhý'
+  end
+  object PlayTimeComboBox: TComboBox
+    Left = 176
+    Height = 27
+    Hint = 'Určuje časový limit na odehrání. Pokud to soupeř nestihne, nastává kontumační výhra. Netýká se umělé intelingence.'
+    Top = 80
+    Width = 108
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    AutoDropDown = True
+    AutoSelect = False
+    AutoSize = False
+    Font.Height = -14
+    ItemHeight = 19
+    ItemIndex = 0
+    Items.Strings = (
+      'Bez limitu'
+      '10 sekund'
+      '20 sekund'
+      '30 sekund'
+      '60 sekund'
+      '120 sekund'
+    )
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    Style = csDropDownList
+    TabOrder = 1
+    Text = 'Bez limitu'
+  end
+  object Player1AILabel: TLabel
+    Left = 16
+    Height = 23
+    Top = 112
+    Width = 152
+    AutoSize = False
+    Caption = 'Chytrost AI Hráče O'
+    FocusControl = Player1AIComboBox
+    Font.Height = 24
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    WordWrap = True
+  end
+  object Player2AILabel: TLabel
+    Left = 16
+    Height = 25
+    Top = 144
+    Width = 155
+    AutoSize = False
+    Caption = 'Chytrost AI Hráče X'
+    FocusControl = Player2AIComboBox
+    Font.Height = 24
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object Player1AIComboBox: TComboBox
+    Left = 176
+    Height = 27
+    Hint = 'Určuje žádanou chytrost (tedy obtížnost hraní) umělé inteligence hrající se symbolem O kolečka. Zvolená umělá inteligence nemusí nastavení podporovat.'
+    Top = 112
+    Width = 108
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    AutoDropDown = True
+    AutoSelect = False
+    AutoSize = False
+    Font.Height = -14
+    ItemHeight = 19
+    ItemIndex = 1
+    Items.Strings = (
+      'Lehká'
+      'Střední'
+      'Těžká'
+    )
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    Style = csDropDownList
+    TabOrder = 2
+    Text = 'Střední'
+  end
+  object Player2AIComboBox: TComboBox
+    Left = 176
+    Height = 27
+    Hint = 'Určuje žádanou chytrost (tedy obtížnost hraní) umělé inteligence hrající se symbolem X křížku. Zvolená umělá inteligence nemusí nastavení podporovat.'
+    Top = 144
+    Width = 108
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    AutoDropDown = True
+    AutoSelect = False
+    AutoSize = False
+    Font.Height = -14
+    ItemHeight = 19
+    ItemIndex = 1
+    Items.Strings = (
+      'Lehká'
+      'Střední'
+      'Těžká'
+    )
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    Style = csDropDownList
+    TabOrder = 3
+    Text = 'Střední'
+  end
+  object CancelButton: TButton
+    Left = 16
+    Height = 33
+    Top = 180
+    Width = 116
+    Anchors = [akLeft, akBottom]
+    Caption = 'Storno'
+    ModalResult = 7
+    TabOrder = 5
+  end
+  object ConfirmButton: TButton
+    Left = 168
+    Height = 32
+    Top = 180
+    Width = 116
+    Anchors = [akRight, akBottom]
+    Caption = 'OK'
+    ModalResult = 6
+    TabOrder = 4
+  end
+  object ResetCfgButton: TButton
+    Left = 168
+    Height = 24
+    Top = 0
+    Width = 132
+    Anchors = [akTop, akRight]
+    Caption = 'RESET'
+    Font.Height = -15
+    OnClick = ResetCfgButtonClick
+    ParentFont = False
+    TabOrder = 7
+  end
+  object KeepCfgButton: TButton
+    Left = 0
+    Height = 24
+    Top = 0
+    Width = 132
+    Caption = 'Uložit výchozí stav'
+    Font.Height = -15
+    OnClick = KeepCfgButtonClick
+    ParentFont = False
+    TabOrder = 8
+  end
+end

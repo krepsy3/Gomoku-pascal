@@ -1,0 +1,450 @@
+object gomokuBoardForm: TgomokuBoardForm
+  Left = 563
+  Height = 600
+  Top = 160
+  Width = 600
+  HorzScrollBar.Page = 1
+  VertScrollBar.Page = 1
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'Gomoku v 1.0 by Štof'
+  ClientHeight = 600
+  ClientWidth = 600
+  Color = clWhite
+  DesignTimePPI = 144
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '1.8.4.0'
+  Scaled = False
+  object CaptionLabel: TLabel
+    Left = 0
+    Height = 52
+    Top = 0
+    Width = 600
+    Alignment = taCenter
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    Caption = 'PIŠKVORKY'
+    Font.Color = 4503088
+    Font.Height = -40
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+    OnClick = DefocusControls
+  end
+  object MenuPanel: TPanel
+    Left = 0
+    Height = 120
+    Top = 52
+    Width = 600
+    BevelColor = clGray
+    BevelOuter = bvNone
+    ClientHeight = 120
+    ClientWidth = 600
+    Color = clWhite
+    ParentColor = False
+    TabOrder = 1
+    OnClick = DefocusControls
+    OnPaint = SymbolPanelPaint
+    object Player2StartRadioButton: TRadioButton
+      Left = 460
+      Height = 29
+      Hint = 'Má začínat hráč se symbolem X křížku?'
+      Top = 70
+      Width = 30
+      Anchors = [akBottom]
+      OnChange = PlayerStartRadioButtonClick
+      TabOrder = 5
+      TabStop = True
+    end
+    object Player1StartRadioButton: TRadioButton
+      Left = 459
+      Height = 29
+      Hint = 'Má začínat hráč se symbolem O kolečka?'
+      Top = 30
+      Width = 30
+      Anchors = [akBottom]
+      Checked = True
+      OnChange = PlayerStartRadioButtonClick
+      TabOrder = 4
+      TabStop = True
+    end
+    object Player1ComboBox: TComboBox
+      Left = 80
+      Height = 32
+      Hint = 'Zvolte typ hráče se symbolem O kolečka'
+      Top = 31
+      Width = 144
+      Anchors = [akBottom]
+      AutoComplete = True
+      AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+      AutoDropDown = True
+      AutoSelect = False
+      AutoSize = False
+      Font.Height = -16
+      ItemHeight = 26
+      ItemIndex = 0
+      Items.Strings = (
+        'Člověk'
+      )
+      OnSelect = Player1ComboBoxSelect
+      ParentFont = False
+      ReadOnly = True
+      Style = csOwnerDrawFixed
+      TabOrder = 0
+      Text = 'Člověk'
+    end
+    object Player2ComboBox: TComboBox
+      Left = 80
+      Height = 32
+      Hint = 'Zvolte typ hráče se symbolem X křížku'
+      Top = 72
+      Width = 144
+      Anchors = [akBottom]
+      AutoComplete = True
+      AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+      AutoDropDown = True
+      AutoSelect = False
+      AutoSize = False
+      Font.Height = -16
+      ItemHeight = 26
+      ItemIndex = 0
+      Items.Strings = (
+        'Člověk'
+      )
+      OnSelect = Player2ComboBoxSelect
+      ParentFont = False
+      ReadOnly = True
+      Style = csOwnerDrawFixed
+      TabOrder = 2
+      Text = 'Člověk'
+    end
+    object Player1NameEdit: TEdit
+      Left = 246
+      Height = 32
+      Hint = 'Napište jméno hráče se symbolem O kolečka'
+      Top = 31
+      Width = 200
+      Anchors = [akBottom]
+      AutoSize = False
+      Font.Height = -19
+      MaxLength = 15
+      OnChange = Player1NameEditChange
+      ParentFont = False
+      TabOrder = 1
+      TextHint = 'Hráč 1'
+    end
+    object Player2NameEdit: TEdit
+      Left = 245
+      Height = 32
+      Hint = 'Napište jméno hráče se symbolem X křížku'
+      Top = 72
+      Width = 200
+      Anchors = [akBottom]
+      AutoSize = False
+      Font.Height = -19
+      MaxLength = 15
+      OnChange = Player2NameEditChange
+      ParentFont = False
+      TabOrder = 3
+      TextHint = 'Hráč 2'
+    end
+    object WhoLabel: TLabel
+      Left = 16
+      Height = 23
+      Top = 8
+      Width = 64
+      Anchors = [akBottom]
+      AutoSize = False
+      Caption = 'Hráč...'
+      Layout = tlCenter
+      ParentColor = False
+      OnClick = DefocusControls
+    end
+    object TypeLabel: TLabel
+      Left = 96
+      Height = 23
+      Top = 8
+      Width = 128
+      Anchors = [akBottom]
+      AutoSize = False
+      Caption = 'Typ hráče'
+      Layout = tlCenter
+      ParentColor = False
+      OnClick = DefocusControls
+    end
+    object NameLabel: TLabel
+      Left = 262
+      Height = 23
+      Top = 8
+      Width = 184
+      Anchors = [akBottom]
+      AutoSize = False
+      Caption = 'Jméno hráče'
+      Layout = tlCenter
+      ParentColor = False
+      OnClick = DefocusControls
+    end
+    object StartsLabel: TLabel
+      Left = 457
+      Height = 23
+      Top = 8
+      Width = 56
+      Anchors = [akBottom]
+      AutoSize = False
+      Caption = 'Začíná'
+      Layout = tlCenter
+      ParentColor = False
+      OnClick = DefocusControls
+    end
+    object StartButton: TButton
+      Left = 504
+      Height = 32
+      Hint = 'Zahájí hru'
+      Top = 72
+      Width = 83
+      Anchors = [akBottom]
+      Caption = 'Hrát!'
+      Font.Height = -19
+      OnClick = StartButtonClick
+      ParentFont = False
+      TabOrder = 6
+    end
+    object OptionsButton: TButton
+      Left = 504
+      Height = 32
+      Hint = 'Zobrazí doplňující nastavení.'
+      Top = 32
+      Width = 83
+      Anchors = [akBottom]
+      Caption = 'Možnosti...'
+      OnClick = OptionsButtonClick
+      ParentFont = False
+      TabOrder = 7
+    end
+  end
+  object GamePanel: TPanel
+    Left = 0
+    Height = 428
+    Top = 172
+    Width = 600
+    BevelColor = clGray
+    BevelOuter = bvNone
+    ClientHeight = 428
+    ClientWidth = 600
+    Color = clWhite
+    Enabled = False
+    ParentColor = False
+    TabOrder = 2
+    OnClick = DefocusControls
+    OnPaint = SymbolPanelPaint
+    object GameFieldPanel: TPanel
+      Left = 12
+      Height = 406
+      Top = 11
+      Width = 406
+      BevelColor = clBlack
+      BevelOuter = bvSpace
+      Color = clWhite
+      ParentColor = False
+      TabOrder = 0
+      OnClick = GameFieldPanelClick
+      OnMouseLeave = GameFieldPanelMouseLeave
+      OnMouseMove = GameFieldPanelMouseMove
+      OnPaint = PaintGameField
+    end
+    object OnPlayGroupBox: TGroupBox
+      Left = 424
+      Height = 144
+      Top = 48
+      Width = 163
+      Caption = 'Na Tahu Je...'
+      ClientHeight = 118
+      ClientWidth = 159
+      Font.Height = -16
+      ParentFont = False
+      TabOrder = 1
+      OnClick = DefocusControls
+      object IndividualTimerLabel: TLabel
+        Left = 4
+        Height = 24
+        Top = 92
+        Width = 152
+        Alignment = taCenter
+        Anchors = [akBottom]
+        AutoSize = False
+        Caption = '0:0.0'
+        Font.Height = -21
+        Layout = tlCenter
+        ParentColor = False
+        ParentFont = False
+        OnClick = DefocusControls
+      end
+      object OnPlayNameLabel: TLabel
+        Left = 4
+        Height = 24
+        Top = 64
+        Width = 152
+        Alignment = taCenter
+        Anchors = [akBottom]
+        AutoSize = False
+        Font.Height = -21
+        Layout = tlCenter
+        ParentColor = False
+        ParentFont = False
+        OnClick = DefocusControls
+      end
+      object OnPlaySymbolPanel: TPanel
+        Left = 0
+        Height = 58
+        Top = 0
+        Width = 156
+        Anchors = [akBottom]
+        BevelOuter = bvNone
+        TabOrder = 0
+        OnPaint = SymbolPanelPaint
+      end
+    end
+    object MainTimerLabel: TLabel
+      Left = 424
+      Height = 32
+      Top = 11
+      Width = 163
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0:0:0.0'
+      Font.Height = -29
+      Layout = tlCenter
+      ParentColor = False
+      ParentFont = False
+      OnClick = DefocusControls
+    end
+    object QuitButton: TButton
+      Left = 424
+      Height = 30
+      Hint = 'Ukončí hru a vrátí se do menu'
+      Top = 387
+      Width = 163
+      Anchors = [akRight, akBottom]
+      Caption = 'Skončit'
+      OnClick = QuitButtonClick
+      TabOrder = 2
+    end
+    object NewGameButton: TButton
+      Left = 424
+      Height = 30
+      Hint = 'Zahájí další kolo hry'
+      Top = 352
+      Width = 163
+      Anchors = [akRight, akBottom]
+      Caption = 'Nové kolo'
+      OnClick = NewGameButtonClick
+      ParentFont = False
+      TabOrder = 3
+    end
+    object SurrenderButton: TButton
+      Left = 424
+      Height = 30
+      Hint = 'Ukončí kolo předčasně, prohrajete'
+      Top = 317
+      Width = 163
+      Anchors = [akRight, akBottom]
+      Caption = 'Vzdát se'
+      OnClick = SurrenderButtonClick
+      TabOrder = 4
+    end
+    object TieButton: TButton
+      Left = 424
+      Height = 30
+      Hint = 'Nabídne lidskému soupeři remízu'
+      Top = 282
+      Width = 163
+      Anchors = [akRight, akBottom]
+      Caption = 'Nabídnout remízu'
+      OnClick = TieButtonClick
+      TabOrder = 5
+    end
+    object BigColonLabel: TLabel
+      Left = 496
+      Height = 88
+      Top = 176
+      Width = 20
+      Anchors = [akBottom]
+      AutoSize = False
+      Caption = ':'
+      Font.Height = -80
+      ParentColor = False
+      ParentFont = False
+      OnClick = DefocusControls
+    end
+    object Player1ScoreLabel: TLabel
+      Left = 457
+      Height = 25
+      Top = 208
+      Width = 10
+      Alignment = taCenter
+      Anchors = [akBottom]
+      Caption = '0'
+      Color = 11184895
+      Font.Height = -19
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      OnClick = DefocusControls
+    end
+    object Player2ScoreLabel: TLabel
+      Left = 544
+      Height = 25
+      Top = 208
+      Width = 10
+      Alignment = taCenter
+      Anchors = [akBottom]
+      Caption = '0'
+      Color = 16755370
+      Font.Height = -19
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      OnClick = DefocusControls
+    end
+  end
+  object InfoButton: TButton
+    Left = 572
+    Height = 28
+    Hint = 'Zobrazí nápovědu'
+    Top = 0
+    Width = 28
+    Anchors = [akTop, akRight]
+    Caption = 'i'
+    Font.Height = -21
+    Font.Name = 'Liberation Mono'
+    Font.Style = [fsBold]
+    OnClick = InfoButtonClick
+    ParentFont = False
+    TabOrder = 0
+    TabStop = False
+  end
+  object BlankPanel: TPanel
+    Left = 0
+    Height = 12
+    Top = 0
+    Width = 12
+    BevelOuter = bvNone
+    ParentShowHint = False
+    TabOrder = 3
+  end
+  object MainTimer: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = MainTimerTimer
+    left = 24
+    top = 8
+  end
+  object IndividualTimer: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = IndividualTimerTimer
+    left = 104
+    top = 8
+  end
+end
