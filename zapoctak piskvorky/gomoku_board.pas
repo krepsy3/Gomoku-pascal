@@ -403,8 +403,9 @@ implementation
     i, j: Integer;
   begin
     {%Region Prepare Game Field}
-      SetLength(gamefield,15,15);
-      for i := 0 to 14 do for j := 0 to 14 do gamefield[i][j] := 0;
+      SetLength(GameField,15,15);
+      for i := 0 to High(GameField) do for j := 0 to High(GameField[0]) do
+        gamefield[i][j] := 0;
 
       GameState := False;
       GamePlayerTurnProcessed := True;

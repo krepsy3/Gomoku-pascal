@@ -85,8 +85,8 @@ implementation
 
       if count >= 4 then
       begin
-        if isMe then count := 20000
-        else count := 10000;
+        if isMe then count := 20
+        else count := 15;
       end;
 
       count := trunc(power(count, 2));
@@ -95,7 +95,7 @@ implementation
         0: res := res + count;
         1: if barrier > 0 then res := res + (count div 2)
            else res := res + count;
-        2: if (barrier > 1) and (count < 10000) then res := res + 0
+        2: if (barrier > 1) and (count < 200) then res := res + 0
            else if barrier = 1 then res := res + (count div 2)
            else res := res + count;
       end;
